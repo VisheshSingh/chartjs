@@ -7,12 +7,30 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
     <title>Chart.js</title>
+    <style>
+        #head{
+            width: 100%;
+            height: 150px;
+            background: #444;
+        }
+
+        h2{
+            margin: 0;
+            color: #fff;
+            text-align: center;
+            padding-top: 50px;
+        }
+    </style>
 </head>
 <body>
+    <div id="head">
+        <h2>Stylish charts built using Chart.js</h2>
+    </div>
+    <br/>
     <div class="container">
-        <canvas id="myChart">
-
-        </canvas>
+        <canvas id="myChart"></canvas>
+        <canvas id="pieChart"></canvas>
+        <canvas id="lineChart"></canvas>
     </div>
 
     <script>
@@ -24,6 +42,106 @@
         Chart.defaults.global.defaultFontColor= '#666';
         let massPopChart = new Chart(myChart, {
             type: 'bar',
+            data: {
+                labels: ["Yonkers", "Buffalo", "Albany", "Rochester", "Syracuse", "Binghamton", "Niagara Falls"],
+                datasets: [{
+                    label: 'Population',
+                    data: [195976, 261310, 97856, 210565, 145170, 47376, 50193],
+                    backgroundColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1,
+                    borderColor: '#000',
+                    hoverBorderWidth:3,
+                    hoverBorderColor:'#000'
+                }]
+            },
+            options: {
+                title:{
+                    display: true,
+                    text:'Population by States in New York',
+                    fontSize: 25
+                },
+                legend: {
+                    display: true,
+                    position: 'right',
+                    /*labels: {
+                        fontColor: '#000'
+                    }*/
+                }
+            },
+            layout:{
+                padding: {
+                    left: 50,
+                    right: 0,
+                    bottom: 0,
+                    top: 0
+                }
+            },
+            tooltips:{
+                /*enabled: false*/
+            }
+        });
+
+        let pieChart = document.getElementById("pieChart").getContext('2d');
+
+        let massPieChart = new Chart(pieChart, {
+            type: 'pie',
+            data: {
+                labels: ["Yonkers", "Buffalo", "Albany", "Rochester", "Syracuse", "Binghamton", "Niagara Falls"],
+                datasets: [{
+                    label: 'Population',
+                    data: [195976, 261310, 97856, 210565, 145170, 47376, 50193],
+                    backgroundColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1,
+                    borderColor: '#000',
+                    hoverBorderWidth:3,
+                    hoverBorderColor:'#000'
+                }]
+            },
+            options: {
+                title:{
+                    display: true,
+                    text:'Population by States in New York',
+                    fontSize: 25
+                },
+                legend: {
+                    display: true,
+                    position: 'right',
+                    /*labels: {
+                        fontColor: '#000'
+                    }*/
+                }
+            },
+            layout:{
+                padding: {
+                    left: 50,
+                    right: 0,
+                    bottom: 0,
+                    top: 0
+                }
+            },
+            tooltips:{
+                /*enabled: false*/
+            }
+        });
+
+        let lineChart = document.getElementById("lineChart").getContext('2d');
+
+        let masslineChart = new Chart(lineChart, {
+            type: 'line',
             data: {
                 labels: ["Yonkers", "Buffalo", "Albany", "Rochester", "Syracuse", "Binghamton", "Niagara Falls"],
                 datasets: [{
